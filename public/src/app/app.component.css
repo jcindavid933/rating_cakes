@@ -1,0 +1,25 @@
+*{
+  margin: 0px;
+  padding: 0px;
+}
+.container{
+  width: 100%;
+  height: auto;
+}
+.submit_box{
+  display: inline-block;
+  width: 40%;
+  height: auto;
+  border: 1px solid black;
+}
+.all_cakes{
+  width: 40%;
+  height: 500px;
+  overflow: auto;
+  border: 1px solid black;
+  display: inline-block;
+}
+.img{
+  width: 80%;
+  height: 50%;
+}

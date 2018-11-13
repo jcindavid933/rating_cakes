@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>Rate My Cakes</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  </head>
+  <body>
+    <div class="container">
+      <h1>Rate my cakes</h1>
+      <div class="submit_box">
+        <h3>Submit a cake to be rated</h3><hr>
+        <form (submit)="createCake()">
+          <div class="form-group">
+            <label for="newCake.baker_name">Baker Name: </label>
+            <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" name="newCake.baker_name" [(ngModel)]="newCake.baker_name">
+          </div>
+          <div class="form-group">
+            <label for="newCake.image_url">Image Url: </label>
+            <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" name="newCake.image_url" [(ngModel)]="newCake.image_url">
+            <button type="submit" class="btn btn-primary">Submit</button>
+          </div>
+        </form>
+      </div>
+      <div class='all_cakes'>
+        <div *ngFor='let cake of allCakes'>
+          <h2>Cake List</h2>
+          <input type="hidden" name="editCake._id" [(ngModel)]="editCake._id" value="cake._id">
+          <img (click)="showOneCake(cake)" src="{{cake.image_url}}" alt="error" class='img'>
+          <form (submit)="updateCakeFromService(cake)">
+            <select class="form-control" id="exampleFormControlSelect1" name="editCake.rating" [(ngModel)]="editCake.rating">
+              <option selected="true" disabled="disabled">Choose Rating</option>
+              <option value='1'>1</option>
+              <option value='2'>2</option>
+              <option value='3'>3</option>
+              <option value='4'>4</option>
+              <option value='5'>5</option>
+            </select>
+            <textarea name="editCake.comment" [(ngModel)]="editCake.comment" rows="8" cols="80" placeholder="Type your comment here"></textarea>
+            <button type="submit" class="btn btn-primary">Rate!</button>
+          </form>
+        </div>
+      </div>
+      <app-cake [selectedCake]='oneCake'></app-cake>
+    </div>
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+  </body>
+</html>
